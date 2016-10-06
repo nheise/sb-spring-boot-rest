@@ -30,4 +30,10 @@ public class PojoPropertiesIT {
     public void getHelloFromProperties() throws Exception {
         Assert.assertThat( pojoProperties.getName(), CoreMatchers.is( "Hello" ) );
     }
+    
+    @Test
+    public void getDirectoriesFromProperties() throws Exception {
+        String[] directories = pojoProperties.getDirectories();
+        Assert.assertThat( directories[0].toString(), CoreMatchers.is( "target/test-classes/dir1" ) );
+    }
 }
