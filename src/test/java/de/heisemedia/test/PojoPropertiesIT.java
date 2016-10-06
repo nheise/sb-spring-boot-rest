@@ -1,6 +1,8 @@
 package de.heisemedia.test;
 
 
+import java.util.Map;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,5 +37,14 @@ public class PojoPropertiesIT {
     public void getDirectoriesFromProperties() throws Exception {
         String[] directories = pojoProperties.getDirectories();
         Assert.assertThat( directories[0].toString(), CoreMatchers.is( "target/test-classes/dir1" ) );
+    }
+    
+    @Test
+    public void getMapFromProperties() throws Exception {
+        Map<String, String> map = pojoProperties.getMap();
+        Assert.assertThat( map.size(), CoreMatchers.is( 3 ) );
+        Assert.assertThat( map.get( "key1" ), CoreMatchers.is( "value1" ) );
+        Assert.assertThat( map.get( "key2" ), CoreMatchers.is( "value2" ) );
+        Assert.assertThat( map.get( "key_\\d.*.csv" ), CoreMatchers.is( "tag-topic-200" ) );
     }
 }
