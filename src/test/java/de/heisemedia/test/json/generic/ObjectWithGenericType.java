@@ -7,6 +7,8 @@ package de.heisemedia.test.json.generic;
 public class ObjectWithGenericType<T> {
 
     private String attr;
+    
+    private T genericAttr;
 
     public String getAttr() {
         return attr;
@@ -23,7 +25,5 @@ public class ObjectWithGenericType<T> {
     public void setGenericAttr( T genericAttr ) {
         this.genericAttr = genericAttr;
     }
-
-    private T genericAttr;
 
 }

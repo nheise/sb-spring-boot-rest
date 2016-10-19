@@ -31,11 +31,12 @@ public class GenericJsonTest {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectReader reader = objectMapper.readerFor( ObjectWithGenericMyType.class );
         
-        MappingIterator<ObjectWithGenericMyType> mi = reader.readValues( "{\"attr\":\"value1\",\"genericAttr\":{\"myAttr\":\"value2\"}}" );
+        MappingIterator<ObjectWithGenericMyType> mi = reader.readValues( "{\"attr\":\"value1\",\"genericAttr\":{\"myAttr\":\"value2\",\"mySubType\":{\"subTypeAttr\":\"value3\"}}}" );
         ObjectWithGenericMyType object = mi.next();
         
         Assert.assertThat( object.getAttr(), CoreMatchers.is( "value1" ) );
         Assert.assertThat( object.getGenericAttr().getMyAttr(), CoreMatchers.is( "value2" ) );
+        Assert.assertThat( object.getGenericAttr().getMySubType().getSubTypeAttr(), CoreMatchers.is( "value3" ) );
     }
 
 }
