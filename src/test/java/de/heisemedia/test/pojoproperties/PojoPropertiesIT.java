@@ -1,4 +1,4 @@
-package de.heisemedia.test;
+package de.heisemedia.test.pojoproperties;
 
 
 import java.util.Map;
